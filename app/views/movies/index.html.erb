@@ -13,7 +13,9 @@
         <th>Year</th>
         <th>Director</th>
         <th>Average Rating</th>
-        <th>Stars</th> 
+        <th>Actors</th>
+        <th>Reviews</th>
+        <th>Filming Locations</th>
       </tr>
     </thead>
     <tbody>
@@ -23,8 +25,28 @@
           <td><%= movie.description %></td>
           <td><%= movie.year %></td>
           <td><%= movie.director %></td>
-          <td><%= movie.average_stars %></td>
           <td><%= star_rating(movie.average_stars) %></td>
+          <td>
+            <ul class="actor-list">
+              <% movie.actors.each do |actor| %>
+                <li><%= actor.name %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul class="review-list">
+              <% movie.reviews.each do |review| %>
+                <li><strong><%= review.user %>:</strong><%= review.review_text %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <ul class="location-list">
+              <% movie.filming_locations.each do |location| %>
+                <li><%= "#{location.location} (#{location.country})" %></li>
+              <% end %>
+            </ul>
+          </td>
         </tr>
       <% end %>
     </tbody>

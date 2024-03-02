@@ -15,7 +15,7 @@
         <th>Average Rating</th>
         <th>Rating Stars</th>
         <th>Actors</th>
-        <th>Reviews</th>
+        <th>Comments</th>
         <th>Filming Locations</th>
       </tr>
     </thead>
@@ -38,7 +38,9 @@
           <td>
             <ul class="review-list">
               <% movie.reviews.each do |review| %>
-                <li><strong><%= review.user %>:</strong><%= review.review_text %></li>
+                <% unless review.review_text=="Empty"%>
+                <li><strong><%= review.user %>:</strong><%= review.review_text  %></li>
+                <% end %>
               <% end %>
             </ul>
           </td>
